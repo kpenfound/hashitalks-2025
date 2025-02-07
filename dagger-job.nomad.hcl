@@ -13,6 +13,12 @@ job "dagger-job" {
 
       env {
         DAGGER_CLOUD_TOKEN = "${NOMAD_META_dagger_cloud_token}"
+        CIRCLE_BRANCH = "${NOMAD_META_commit}"
+        CIRCLE_SHA1 = "${NOMAD_META_commit}"
+        CIRCLE_REPOSITORY_URL = "${NOMAD_META_repository}"
+        CIRCLE_JOB = "check"
+        CI = "true"
+        CIRCLECI = "true"
       }
 
       config {

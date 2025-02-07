@@ -77,12 +77,12 @@ func (l *Listener) SubmitNomadJob(payload *NomadPayload) error {
 	jobID := "dagger-job"
 
 	meta := map[string]string{
-		"repository": *payload.repository,
+		"repository": "github.com/" + *payload.repository,
 		"commit":     *payload.commit,
 	}
 	daggerCloudToken := os.Getenv("DAGGER_CLOUD_TOKEN")
 	if daggerCloudToken != "" {
-		meta["dagger-cloud-token"] = daggerCloudToken
+		meta["dagger_cloud_token"] = daggerCloudToken
 	}
 	dispatch, _, err := l.NomadJobsClient.Dispatch(
 		jobID,
